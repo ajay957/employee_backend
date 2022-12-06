@@ -1,7 +1,9 @@
 package com.example.employee_backend.controller;
 
+import com.example.employee_backend.model.Employees;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -11,27 +13,19 @@ public class EmployeeController {
        return "welcome to employee home page";
    }
 
-   @PostMapping("/add")
-    public String AddEmployee(){
-       return "welcome to add employee page";
+   @PostMapping(path = "/add",consumes = "application/json",produces = "application/json")
+    public String AddEmployee(@RequestBody Employees e){
+       System.out.println(e.getEmp_code());
+       System.out.println(e.getEmp_name().toString());
+       System.out.println(e.getDesignation().toString());
+       System.out.println(e.getSalary());
+       System.out.println(e.getCom_name().toString());
+       System.out.println(e.getMob_no().toString());
+       System.out.println(e.getUsername().toString());
+       System.out.println(e.getPassword().toString());
+       return "employee added successfully";
    }
 
-   @PostMapping("/search")
-    public String SearchEmployee(){
-       return "search an employee";
-   }
-   @PostMapping("/edit")
-    public String EditEmployee(){
-       return "edit an employee";
-   }
-   @GetMapping("/view")
-    public String ViewAllEmployee(){
-       return "View all the employee";
-   }
-   @PostMapping("/delete")
-    public String DeleteEmployee(){
-       return "delete an employee";
-   }
 
 
 }
