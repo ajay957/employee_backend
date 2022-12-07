@@ -35,5 +35,11 @@ public class EmployeeController {
    public List<Employees> viewAll(){
       return(List<Employees>) dao.findAll();
    }
+   @PostMapping(path="/search",consumes = "application/json",produces = "application/json")
+   public List<Employees> SearchEmployee(@RequestBody Employees e){
+      String empcode=String.valueOf(e.getEmp_code());
+      System.out.println(empcode);
+      return (List<Employees>) dao.SearchEmployee(e.getEmp_code());
+   }
 
 }
